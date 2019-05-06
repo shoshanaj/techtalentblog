@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rose's Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    </div>
+     <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="#">About Rose</li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+      <li> <% if user_signed_in? %>
+      <% if current_user.avatar.url.blank? == false %>
+      <%= image_tag current_user.avatar.url, size: 50 %>
+      <% end %>
+      <% end %></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="jumbotron" style="background-color:#A9A9A9">
+  <center><h1>Rose's Blog</h1></center> 
+  <center><p>Life with a dog named Daisy and a cat named Steve Perry.</p></center> 
+</div>
+<div class="container">
+</div>
+
+    </div>
+  
+</div>
+
+  </head>
+
+  <body>
+    <div> 
+     
+      <div class="container">
+    <%= yield %>
+  </div>
+  </body>
+</html>

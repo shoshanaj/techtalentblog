@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Welcome, <%= current_user.username %>!</h1>
+
+<h1>Posts</h1>
+
+
+  <tbody>
+    <% @posts.each do |post| %>
+    <div class="panel panel-default">
+      <div class ="panel-heading">
+        <td><%= post.title %></td> by <%= link_to post.user.username, user_posts_path(name: post.user.username) %>
+      </div>
+      
+      <div class="panel-body">
+        <td><%= post.blog_entry.html_safe %></td>
+      </div>
+
+      <div class="panel-footer">
+        <td><%= link_to 'Show', post, class: "btn btn-success btn-sm" %> </td>
+        <td><%= link_to 'Edit', edit_post_path(post), class: "btn btn-success btn-sm" %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-success btn-sm" %></td>
+      </div>
+    </div>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<br>
+
+<%= paginate @posts %>
+
+<%= link_to 'New Post', new_post_path %>

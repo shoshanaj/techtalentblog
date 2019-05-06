@@ -1,0 +1,9 @@
+<h1><%= @user.username %>'s posts</h1>
+
+<% @user.posts.each do |post| %>
+		<div class="well">
+			<h3><%= post.title %></h3>
+			<h4>by <%= post.user.username %> </h4>
+			<p><%= post.blog_entry.html_safe %></p>
+		</div>
+	<% end %>
